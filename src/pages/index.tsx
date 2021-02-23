@@ -3,7 +3,7 @@ import styles from '../styles/pages/Home.module.css';
 import { ExperienceBar } from '../components/ExperienceBar';
 import { Profile } from '../components/Profile';
 import { CompletedChallanges } from '../components/CompletedChallanges';
-import { Countdown } from '../components/CountDown';
+import { Countdown } from '../components/Countdown';
 
 import Head from 'next/head';
 
