@@ -1,0 +1,117 @@
+.challangeBoxContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  height: 100%;
+  padding: 1rem;
+
+  border-radius: 5px;
+
+  text-align: center;
+  background-color: var(--white);
+
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
+}
+
+.challangeNotActive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.challangeNotActive strong {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.challangeNotActive p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  max-width: 70%;
+  margin-top: 3rem;
+
+  line-height: 1.4;
+}
+
+.challangeNotActive p img {
+  margin-bottom: 1rem;
+}
+
+.challangeActive {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+}
+
+.challangeActive header {
+  padding: 0 2rem 1.5rem;
+
+  border-bottom: 1px solid var(--gray-line);
+
+  font-size: 1.25rem;
+  font-weight: 600;
+
+  color: var(--blue);
+}
+
+.challangeActive main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.challangeActive main strong {
+  margin: 1.5rem 0 1rem;
+  
+  font-size: 2rem;
+  font-weight: 600;
+
+  color: var(--title);
+}
+
+.challangeActive main p {
+  line-height: 1.5;
+}
+
+.challangeActive footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 1rem;
+}
+
+.challangeActive footer button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  height: 3rem;
+
+  border: 0;
+  border-radius: 5px;
+  
+  font-size: 1rem;
+  font-weight: 600;
+
+  color: var(--white);
+}
+
+.challangeActive footer button.challangeFailedButton {
+  background-color: var(--red);
+}
+
+.challangeActive footer button.challangeSucceededButton {
+  background-color: var(--green);
+}
+
+.challangeActive footer button:hover {
+  filter: brightness(.9);
+}
