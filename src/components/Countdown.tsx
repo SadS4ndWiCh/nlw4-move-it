@@ -58,11 +58,6 @@ export function Countdown() {
         ) }
       </>
     ) }
-    
-
-    
-
-    
     </div>    
   )
 }
