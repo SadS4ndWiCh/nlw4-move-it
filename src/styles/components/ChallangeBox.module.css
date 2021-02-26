@@ -10,7 +10,7 @@
   border-radius: 5px;
 
   text-align: center;
-  background-color: var(--white);
+  background-color: #161616;
 
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.05);
 }
@@ -25,6 +25,8 @@
   font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.4;
+
+  color: #DCDDE0;
 }
 
 .challangeNotActive p {
@@ -52,7 +54,7 @@
 .challangeActive header {
   padding: 0 2rem 1.5rem;
 
-  border-bottom: 1px solid var(--gray-line);
+  border-bottom: 1px solid var(--white);
 
   font-size: 1.25rem;
   font-weight: 600;
@@ -74,7 +76,7 @@
   font-size: 2rem;
   font-weight: 600;
 
-  color: var(--title);
+  color: var(--blue);
 }
 
 .challangeActive main p {
@@ -101,7 +103,7 @@
   font-size: 1rem;
   font-weight: 600;
 
-  color: var(--white);
+  color: var(--background);
 }
 
 .challangeActive footer button.challangeFailedButton {
