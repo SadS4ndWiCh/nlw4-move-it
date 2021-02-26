@@ -3,11 +3,7 @@ import '../styles/globals.css';
 import { ChallangesProvider } from '../contexts/ChallangesContext';
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <ChallangesProvider>
-      <Component {...pageProps} />
-    </ChallangesProvider>
-  )
+  return <Component {...pageProps} />
 }
 
 export default MyApp
