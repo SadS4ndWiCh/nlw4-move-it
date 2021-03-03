@@ -1,62 +1,66 @@
 import { GetServerSideProps } from 'next';
+import { signIn, getSession } from 'next-auth/client';
 import Head from 'next/head';
 
-import styles from '../styles/pages/Home.module.css';
+import styles from '../styles/pages/Login.module.css';
 
-import { ExperienceBar } from '../components/ExperienceBar';
-import { Profile } from '../components/Profile';
-import { CompletedChallanges } from '../components/CompletedChallanges';
-import { Countdown } from '../components/Countdown';
-
-import { ChallangeBox } from '../components/ChallangeBox';
-import { CountdownProvider } from '../contexts/CountdownContext';
-import { ChallangesProvider } from '../contexts/ChallangesContext';
-
-interface HomeProps {
-  level: number;
-  currentExperience: number;
-  challangesCompleted: number;
-}
-
-export default function Home(props: HomeProps) {
+export default function LoginPage() {
   return (
-    <ChallangesProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challangesCompleted={props.challangesCompleted}
-    >
+    <>
       <div className={styles.container}>
         <Head>
           <title>Início | move.it</title>
         </Head>
 
-        <ExperienceBar />
+        <span></span>
 
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallanges />
-              <Countdown />
-            </div>
-            <div>
-              <ChallangeBox />
-            </div>
-          </section>
-        </CountdownProvider>
+        <div>
+          <header>
+            <img src="logo-full.svg" alt="Moveit" />
+          </header>
+
+          <main>
+            <h1>Bem-vindo</h1>
+            <p>Faça login com seu Github para começar</p>
+            <button onClick={() => signIn('github')}>
+              <img src="icons/github.svg" alt="Github"/>
+              <span>Logar com Github</span>
+            </button>
+          </main>
+
+          <footer>Com 💜 SadSAndWiCh</footer>
+        </div>
       </div>
-    </ChallangesProvider>
+    </>
+
+    
   )
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challangesCompleted } = ctx.req.cookies;
+  /* const session = await getSession(ctx);
+
+  if(session) {
+    return {
+      redirect: {
+        destination: '/dashboard',
+        permanent: false,
+      },
+    }
+  } */
 
   return {
-    props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challangesCompleted: Number(challangesCompleted),
-    }
+    props: {}
   }
 }
+
+/* <>
+      {!session && <>
+        Not signed in <br/>
+        <button onClick={() => signIn('github')}>Sign in</button>
+      </>}
+      {session && <>
+        Signed in as {session.user.name} <br/>
+        <button onClick={() => signOut()}>Sign out</button>
+      </>}
+    </> */
