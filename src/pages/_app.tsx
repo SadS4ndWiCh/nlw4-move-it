@@ -1,9 +1,13 @@
+import { Provider } from 'next-auth/client';
+
 import '../styles/globals.css';
 
-import { ChallangesProvider } from '../contexts/ChallangesContext';
-
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (
+    <Provider session={pageProps.session}>
+      <Component {...pageProps} />
+    </Provider>
+  )
 }
 
 export default MyApp
