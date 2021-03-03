@@ -5,30 +5,13 @@ import Providers from 'next-auth/providers';
 import axios from 'axios';
 
 import { connectToDatabase } from '../../../utils/database';
+import { signIn } from 'next-auth/client';
 
 interface SignInUserData {
   id: number;
   name: string;
   email?: string;
   image?: string;
-}
-
-interface SignInAccountData {
-  provider: string;
-  type: string;
-  id: number;
-  accessToken: string;
-  accessTokenExpires?: string;
-  refreshToken?: string;
-  idToken?: string;
-  access_token: string;
-  scope: string;
-  token_type: string;
-}
-
-interface ISignIn {
-  user: SignInUserData,
-  account: SignInAccountData;
 }
 
 const options = {
@@ -44,18 +27,27 @@ const options = {
   // A database is optional, but required to persist accounts in a database
   database: process.env.DATABASE_URL,
 
-  events: {
-    async signIn({ user }: ISignIn) {
-      axios.get(`http://localhost:3000/api/user/${user.name}`)
-        .then(async ({ data }) => {
-          if(data.level) return;
-  
-          await axios.post('http://localhost:3000/api/user', {
-            name: user.name,
-          });
-        })
-    }
-  }
+  callbacks: {
+    async signIn(user: SignInUserData, account: any, profile: any) {
+      const { db } = await connectToDatabase();
+      const userExists = await db.collection('usersdata').findOne({ name: user.name });
+
+      if(!userExists) {
+        await db.collection('usersdata').insertOne({
+          name: user.name,
+          avatarUrl: user.image,
+
+          level: 1,
+          currentExperience: 0,
+          challangesCompleted: 0,
+        });
+      }
+
+      return true;
+    },
+  },
+
+  debug: false,
 }
 
 export default (req: NextApiRequest, res: NextApiResponse): Promise<void> => NextAuth(req, res, options);
