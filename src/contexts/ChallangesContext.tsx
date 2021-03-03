@@ -1,8 +1,10 @@
 import { createContext, useState, ReactNode, useEffect } from 'react';
-import Cookies from 'js-cookie';
+import { useSession } from 'next-auth/client';
+import axios from '../services/api';
 
 import challanges from '../../challanges.json';
 import { LevelUpModal } from '../components/LevelUpModal';
+import useFetch from '../hooks/useFetch';
 
 interface ChallangesProviderProps {
   children: ReactNode;
@@ -33,9 +35,14 @@ interface ChallangesContextData {
 export const ChallangesContext = createContext({} as ChallangesContextData);
 
 export function ChallangesProvider({ children, ...rest }: ChallangesProviderProps) {
-  const [level, setLevel] = useState(rest.level ?? 1);
-  const [currentExperience, setCurrentExperience] = useState(rest.currentExperience ?? 0);
-  const [challangesCompleted, setChallangesCompleted] = useState(rest.challangesCompleted ?? 0);
+  const [session, loading] = useSession();
+  const userName = session?.user.name;
+  const { data, error, mutate } = useFetch(`/user/${userName}`);
+
+
+  const [level, setLevel] = useState(rest.level);
+  const [currentExperience, setCurrentExperience] = useState(rest.currentExperience);
+  const [challangesCompleted, setChallangesCompleted] = useState(rest.challangesCompleted);
   
   const [activeChallange, setActiveChallange] = useState(null);
   const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false);
@@ -47,9 +54,13 @@ export function ChallangesProvider({ children, ...rest }: ChallangesProviderProp
   }, []);
 
   useEffect(() => {
-    Cookies.set('level', String(level));
-    Cookies.set('currentExperience', String(currentExperience));
-    Cookies.set('challangesCompleted', String(challangesCompleted));
+    if(!loading) {
+      const updatedUserData = { level, currentExperience, challangesCompleted };
+
+      axios.put(`/user/${userName}`, updatedUserData);
+  
+      mutate(updatedUserData, false);
+    }
 
   }, [level, currentExperience, challangesCompleted]);
 
