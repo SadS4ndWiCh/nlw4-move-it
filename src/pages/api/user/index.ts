@@ -2,13 +2,12 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import { connectToDatabase } from '../../../utils/database';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const { name } = req.body;
-  
-  if(!name) {
-    return res.status(400).json({ message: 'Missing `name` of user' });
-  }
-
   if(req.method === 'POST') {
+    const { name } = req.body;
+    if(!name) {
+      return res.status(400).json({ message: 'Missing `name` of user' });
+    }
+
     const { db } = await connectToDatabase();
 
     const userExists = await db.collection('usersdata').findOne({ name });
