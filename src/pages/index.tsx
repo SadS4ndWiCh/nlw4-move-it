@@ -38,7 +38,7 @@ export default function LoginPage() {
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  /* const session = await getSession(ctx);
+  const session = await getSession(ctx);
 
   if(session) {
     return {
@@ -47,20 +47,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         permanent: false,
       },
     }
-  } */
+  }
 
   return {
     props: {}
   }
 }
-
-/* <>
-      {!session && <>
-        Not signed in <br/>
-        <button onClick={() => signIn('github')}>Sign in</button>
-      </>}
-      {session && <>
-        Signed in as {session.user.name} <br/>
-        <button onClick={() => signOut()}>Sign out</button>
-      </>}
-    </> */
