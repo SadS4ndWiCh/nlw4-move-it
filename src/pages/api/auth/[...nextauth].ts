@@ -1,7 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
 import NextAuth from 'next-auth';
 import Providers from 'next-auth/providers';
+
+import axios from 'axios';
+
+import { connectToDatabase } from '../../../utils/database';
 
 interface SignInUserData {
   id: number;
@@ -42,6 +45,16 @@ const options = {
   database: process.env.DATABASE_URL,
 
   events: {
+    async signIn({ user }: ISignIn) {
+      axios.get(`http://localhost:3000/api/user/${user.name}`)
+        .then(async ({ data }) => {
+          if(data.level) return;
+  
+          await axios.post('http://localhost:3000/api/user', {
+            name: user.name,
+          });
+        })
+    }
   }
 }
 
