@@ -1,0 +1,101 @@
+.leaderboardContainer{
+  height: 100vh;
+  max-width: 992px;
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.leaderboardContainer > h1 {
+  margin-bottom: 2.5rem;
+  
+  color: var(--white);
+}
+
+.leaderboardTable {
+  width: 100%;
+  border-spacing: 0 0.5rem;
+}
+
+.leaderboardTable tbody tr td {
+  padding: 1rem;
+
+  background-color: #1f1b24;
+}
+
+.leaderboardTable th,
+.leaderboardTable td {
+  padding: .5rem 1rem;
+}
+
+.leaderboardTable th:first-child {
+  padding-left: 0;
+}
+
+.leaderboardTable thead tr th:first-child,
+.leaderboardTable tbody tr td:first-child {
+  border-radius: .25rem 0 0 .25rem;
+}
+.leaderboardTable thead tr th:last-child,
+.leaderboardTable tbody td:last-child {
+  border-radius: 0 .25rem .25rem 0;
+}
+
+.leaderboardTable thead th:nth-child(1) {
+  width: 50px;
+}
+
+.leaderboardTable thead th {
+  font-size: .9rem;
+
+  text-transform: uppercase;
+  text-align: left;
+  opacity: .7;
+}
+
+.position {
+  font-size: 1.5rem;
+  text-align: center;
+
+  color: var(--white);
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user p {
+  margin-bottom: .25rem;
+
+  font-size: 1.1rem;
+  color: var(--white);
+}
+
+.user > img {
+  width: 3.5rem;
+
+  margin-right: 1rem;
+
+  border-radius: 50%;
+}
+
+.user span {
+  display: flex;
+  align-items: center;
+}
+
+.user span img {
+  margin-right: .5rem;
+}
+
+.challangesCompleted {
+  flex-wrap: nowrap;
+}
+
+.challangesCompleted span,
+.currentExperience span {
+  color: var(--blue);
+}
