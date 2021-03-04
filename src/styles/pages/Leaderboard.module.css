@@ -14,6 +14,10 @@
   color: var(--white);
 }
 
+.leadeboardTableContainer {
+  overflow-x: auto;
+}
+
 .leaderboardTable {
   width: 100%;
   border-spacing: 0 0.5rem;
@@ -89,10 +93,6 @@
 
 .user span img {
   margin-right: .5rem;
-}
-
-.challangesCompleted {
-  flex-wrap: nowrap;
 }
 
 .challangesCompleted span,
