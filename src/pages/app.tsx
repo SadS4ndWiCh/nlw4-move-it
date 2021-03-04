@@ -9,8 +9,9 @@ import { ExperienceBar } from '../components/ExperienceBar';
 import { Profile } from '../components/Profile';
 import { CompletedChallanges } from '../components/CompletedChallanges';
 import { Countdown } from '../components/Countdown';
-
 import { ChallangeBox } from '../components/ChallangeBox';
+import { Sidebar } from '../components/Sidebar';
+
 import { CountdownProvider } from '../contexts/CountdownContext';
 import { ChallangesProvider } from '../contexts/ChallangesContext';
 
@@ -18,12 +19,13 @@ export default function DashboardPage() {
   const [session, loading] = useSession();
   const { data, error } = useFetch(`/user/${session?.user.name}`);
 
-  if(loading) {
-    return (<h1>loading ...</h1>)
-  }
-
   return (
     <>
+      <Sidebar />
+      { loading && !data && (
+        <h1>Loading...</h1>
+      )}
+
       { !loading && data && (
         <ChallangesProvider
           level={data.level}
@@ -34,7 +36,7 @@ export default function DashboardPage() {
             <Head>
               <title>{session.user.name} | move.it</title>
             </Head>
-    
+
             <ExperienceBar />
     
             <CountdownProvider>
