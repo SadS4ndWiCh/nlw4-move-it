@@ -1,5 +1,9 @@
+import Head from 'next/head';
+
 import { Sidebar } from '../components/Sidebar';
+
 import useFetch from '../hooks/useFetch';
+
 import styles from '../styles/pages/Leaderboard.module.css';
 
 interface User {
@@ -27,6 +31,10 @@ export default function LeaderboardPage() {
 
       { data && !error && (
         <div className={styles.leaderboardContainer}>
+          <Head>
+            <title>Leaderboard | Move.it</title>
+          </Head>
+
           <h1>Leaderboard</h1>
 
           <main className={styles.leadeboardTableContainer}>
