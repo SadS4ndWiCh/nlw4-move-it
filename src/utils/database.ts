@@ -10,6 +10,7 @@ export async function connectToDatabase() {
   const client = await MongoClient.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    poolSize: 10,
     j: true,
   });
 
