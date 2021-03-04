@@ -1,4 +1,6 @@
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { getSession } from 'next-auth/client';
 
 import { Sidebar } from '../components/Sidebar';
 
@@ -74,4 +76,21 @@ export default function LeaderboardPage() {
       )}
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const session = await getSession(ctx);
+
+  if(!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+
+  return {
+    props: {}
+  }
 }
