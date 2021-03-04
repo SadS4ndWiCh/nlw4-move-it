@@ -62,7 +62,18 @@
   transform: translateX(-50%);
 }
 
-.navIcon {
+.signOutBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  color: var(--blue);
+  background-color: transparent;
+}
+
+.navIcon, .signOutBtn {
   font-size: 2rem;
 }
 
