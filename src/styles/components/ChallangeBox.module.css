@@ -117,3 +117,24 @@
 .challangeActive footer button:hover {
   filter: brightness(.9);
 }
+
+@media (max-width: 840px) {
+  .challangeNotActive img {
+    width: 4rem;
+  }
+
+  .challangeActive main img {
+    width: 7rem;
+
+    margin-top: 2rem;
+  }
+
+  .challangeActive main p {
+    margin: 1.25rem 0;
+  }
+
+  .challangeActive footer {
+    display: flex;
+    flex-direction: column;
+  }
+}

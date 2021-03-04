@@ -27,3 +27,13 @@ span.currentExperience{
   transform: translateX(-50%);
   top: 12px;
 }
+
+@media (max-width: 840px) {
+  .experienceBar {
+    margin-bottom: 4rem;
+  }
+
+  .currentExperience {
+    display: none;
+  }
+}

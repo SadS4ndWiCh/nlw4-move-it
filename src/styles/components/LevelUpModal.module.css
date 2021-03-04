@@ -98,3 +98,15 @@
 .container .shareTwitterButton img {
   margin-left: .8rem;
 }
+
+@media (max-width: 410px) {
+  .container {
+    width: 90%;
+  }
+
+  .container header {
+    width: 90%;
+
+    margin: 0 auto;
+  }
+}
