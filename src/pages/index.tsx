@@ -16,13 +16,11 @@ export default function LoginPage() {
           <meta name='og:url' content={process.env.NEXT_PUBLIC_BASE_URL} />
           <meta name='og:title' content='Início | move.it' />
           <meta name='og:description' content='Não fique parado em frente ao computador por muito tempo, se mova!' />
-          <meta name='og:image' content={`${process.env.NEXT_PUBLIC_BASE_URL}/logo-full.svg`} />
 
           <meta name='twitter:card' content='summary_large_image' />
           <meta name='twitter:url' content={process.env.NEXT_PUBLIC_BASE_URL} />
           <meta name='twitter:title' content='Início | move.it' />
           <meta name='twitter:description' content='Não fique parado em frente ao computador por muito tempo, se mova!' />
-          <meta name='twitter:image' content={`${process.env.NEXT_PUBLIC_BASE_URL}/logo-full.svg`} />
 
           <title>Início | move.it</title>
         </Head>
