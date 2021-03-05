@@ -37,8 +37,7 @@ export const ChallangesContext = createContext({} as ChallangesContextData);
 export function ChallangesProvider({ children, ...rest }: ChallangesProviderProps) {
   const [session, loading] = useSession();
   const userName = session?.user.name;
-  const { data, error, mutate } = useFetch(`/user/${userName}`);
-
+  const { mutate } = useFetch(`/user/${userName}`);
 
   const [level, setLevel] = useState(rest.level);
   const [currentExperience, setCurrentExperience] = useState(rest.currentExperience);
@@ -54,7 +53,7 @@ export function ChallangesProvider({ children, ...rest }: ChallangesProviderProp
   }, []);
 
   useEffect(() => {
-    if(!loading) {
+    if(session && !loading) {
       const updatedUserData = { level, currentExperience, challangesCompleted };
 
       axios.put(`/user/${userName}`, updatedUserData);
