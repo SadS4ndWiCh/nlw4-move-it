@@ -11,9 +11,11 @@ import { CompletedChallanges } from '../components/CompletedChallanges';
 import { Countdown } from '../components/Countdown';
 import { ChallangeBox } from '../components/ChallangeBox';
 import { Sidebar } from '../components/Sidebar';
+import { Loading } from '../components/Loading';
 
 import { CountdownProvider } from '../contexts/CountdownContext';
 import { ChallangesProvider } from '../contexts/ChallangesContext';
+import { ErrorMessage } from '../components/ErrorMessage';
 
 export default function DashboardPage() {
   const [session, loading] = useSession();
@@ -23,8 +25,12 @@ export default function DashboardPage() {
     <>
       <Sidebar />
       { loading && !data && (
-        <h1>Loading...</h1>
+        <Loading />
       )}
+
+      { !data && error && (
+        <ErrorMessage message="Não foi possível carregar os dados do Usuário" />
+      ) }
 
       { !loading && data && (
         <ChallangesProvider

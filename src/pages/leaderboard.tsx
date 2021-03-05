@@ -3,10 +3,12 @@ import Head from 'next/head';
 import { getSession } from 'next-auth/client';
 
 import { Sidebar } from '../components/Sidebar';
+import { Loading } from '../components/Loading';
 
 import useFetch from '../hooks/useFetch';
 
 import styles from '../styles/pages/Leaderboard.module.css';
+import { ErrorMessage } from '../components/ErrorMessage';
 
 interface User {
   _id: string;
@@ -24,11 +26,11 @@ export default function LeaderboardPage() {
     <>
       <Sidebar />
       { !data && !error && (
-        <h1>Loading...</h1>
+        <Loading />
       ) }
 
       { !data && error && (
-        <h1>Error</h1>
+        <ErrorMessage message='Não foi possível carregar os dados do placar' />
       ) }
 
       { data && !error && (
