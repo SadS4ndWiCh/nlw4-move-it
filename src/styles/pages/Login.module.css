@@ -52,6 +52,10 @@
   background-color: var(--gray-line);
 }
 
+.container button img {
+  width: 2.5rem;
+}
+
 .container button:hover {
   opacity: .8;
 }
@@ -65,7 +69,20 @@
 
 @media (max-width: 1180px) {
   .container {
+    background-size: 50%;
+  }
+}
+
+@media (max-width: 970px) {
+  .container {
+    background-size: 45%;
+  }
+}
+
+@media (max-width: 845px) {
+  .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
     margin: 0 2rem;
@@ -73,5 +90,18 @@
     text-align: center;
 
     background-image: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .container > div {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+  }
+
+  .container > div main {
+    flex: 1;
   }
 }
